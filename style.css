@@ -1,0 +1,137 @@
+/* Main page styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #555;
+    margin: 30px 0 20px 0;
+}
+
+/* Instructions section */
+.instructions {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.instructions h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.instructions ul {
+    margin: 10px 0;
+}
+
+.instructions li {
+    margin: 5px 0;
+    text-align: left;
+}
+
+/* Video and controls */
+video {
+    border: 2px solid #333;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+a {
+    background: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px;
+    display: inline-block;
+}
+
+a:hover {
+    background: #1976D2;
+}
+
+/* Snapshot container */
+.snapshot-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Main grid layout */
+#grid {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 170px);
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Individual canvas containers */
+.canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.canvas-label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    text-align: center;
+    min-height: 15px;
+}
+
+/* Canvas styling */
+canvas {
+    width: 160px;
+    height: 120px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Slider controls */
+.threshold-slider {
+    width: 150px;
+    margin: 8px 0 5px 0;
+    cursor: pointer;
+}
+
+.slider-value {
+    font-size: 11px;
+    color: #666;
+    font-weight: normal;
+    min-height: 15px;
+}

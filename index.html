@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webcam Image Processing Tool</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- External libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.12.2/dist/ml5.min.js"></script>
+</head>
+<body>
+    <h1>Webcam Image Processing Tool</h1>
+    
+    <div class="instructions">
+        <h3>Face Detection Controls:</h3>
+        <p>After capturing a snapshot, use these keys to modify detected faces:</p>
+        <ul style="display: inline-block; text-align: left;">
+            <li><strong>Key 1:</strong> Grayscale effect</li>
+            <li><strong>Key 2:</strong> Blur effect</li>
+            <li><strong>Key 3:</strong> HSV color visualization</li>
+            <li><strong>Key 4:</strong> Pixelation effect</li>
+            <li><strong>Key 5:</strong> Reset to normal detection</li>
+        </ul>
+    </div>
+    
+    <!-- Webcam feed -->
+    <video id="video" width="320" height="240" autoplay></video>
+    <br>
+    
+    <!-- Controls -->
+    <button id="snap">📸 Capture Image</button>
+    <a id="download" download="snapshot.png">💾 Save Image</a>
+    
+    <!-- Processing canvas (hidden) -->
+    <div class="snapshot-container">
+        <canvas id="canvas" width="160" height="120"></canvas>
+    </div>
+
+    <h2>Image Processing Effects</h2>
+    
+    <!-- Image grid -->
+    <div id="grid">
+        <!-- Row 1: Basic effects -->
+        <div class="canvas-container">
+            <div class="canvas-label">Original</div>
+            <canvas id="slot1" width="160" height="120"></canvas>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">Grayscale</div>
+            <canvas id="slot2" width="160" height="120"></canvas>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">X-Ray Filter</div>
+            <canvas id="slot3" width="160" height="120"></canvas>
+        </div>
+        
+        <!-- Row 2: RGB channels -->
+        <div class="canvas-container">
+            <div class="canvas-label">Red Channel</div>
+            <canvas id="slot4" width="160" height="120"></canvas>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">Green Channel</div>
+            <canvas id="slot5" width="160" height="120"></canvas>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">Blue Channel</div>
+            <canvas id="slot6" width="160" height="120"></canvas>
+        </div>
+        
+        <!-- Row 3: Threshold effects -->
+        <div class="canvas-container">
+            <div class="canvas-label">Red Threshold</div>
+            <canvas id="slot7" width="160" height="120"></canvas>
+            <input type="range" id="slider7" class="threshold-slider" min="0" max="255" value="128">
+            <div class="slider-value" id="value7">128</div>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">Green Threshold</div>
+            <canvas id="slot8" width="160" height="120"></canvas>
+            <input type="range" id="slider8" class="threshold-slider" min="0" max="255" value="128">
+            <div class="slider-value" id="value8">128</div>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">Blue Threshold</div>
+            <canvas id="slot9" width="160" height="120"></canvas>
+            <input type="range" id="slider9" class="threshold-slider" min="0" max="255" value="128">
+            <div class="slider-value" id="value9">128</div>
+        </div>
+        
+        <!-- Row 4: Color space effects -->
+        <div class="canvas-container">
+            <div class="canvas-label">Original Copy</div>
+            <canvas id="slot10" width="160" height="120"></canvas>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">HSV Visualization</div>
+            <canvas id="slot11" width="160" height="120"></canvas>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">Lab Visualization</div>
+            <canvas id="slot12" width="160" height="120"></canvas>
+        </div>
+        
+        <!-- Row 5: Advanced effects -->
+        <div class="canvas-container">
+            <div class="canvas-label">Face Detection</div>
+            <canvas id="slot13" width="160" height="120"></canvas>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">HSV Threshold</div>
+            <canvas id="slot14" width="160" height="120"></canvas>
+            <input type="range" id="slider14" class="threshold-slider" min="0" max="255" value="128">
+            <div class="slider-value" id="value14">128</div>
+        </div>
+        <div class="canvas-container">
+            <div class="canvas-label">Lab Threshold</div>
+            <canvas id="slot15" width="160" height="120"></canvas>
+            <input type="range" id="slider15" class="threshold-slider" min="0" max="255" value="128">
+            <div class="slider-value" id="value15">128</div>
+        </div>
+    </div>
+
+    <!-- JavaScript modules - load in dependency order -->
+    <script src="imageUtils.js"></script>
+    <script src="main.js"></script>
+    <script src="basicEffects.js"></script>
+    <script src="thresholdEffects.js"></script>
+    <script src="colorSpaceEffects.js"></script>
+    <script src="faceDetection.js"></script>
+</body>
+</html>
